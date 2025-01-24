@@ -22,6 +22,7 @@ We adapt the codebases of [Mask3D](https://github.com/JonasSchult/Mask3D), a 3D 
 ├── RoomFormer                        <- RoomFormer model code, adapted to the metrics of this work
 ```
 
+Please find the valid_scenes_file used for Structured3D [here](structured3d_valid_scenes_class21.txt). It contains a list of all scenes that were used for training because their preprocessing was successful.
 
 
 ## Setting up the development environment
