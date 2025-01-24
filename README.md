@@ -47,9 +47,9 @@ ARG USER_GID=610200513
 
 Within the devcontainer.json file of each devcontainer configuration, you need to mount your dataset folder into the Docker container so that it is available at `/data` from inside the container:
 ```JSON
-	"mounts": [
-		"source=/your/data_folder/,target=/data,type=bind"
-	]
+"mounts": [
+	"source=/your/data_folder/,target=/data,type=bind"
+]
 ```
 
 <!--
