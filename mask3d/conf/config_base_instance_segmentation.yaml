@@ -1,0 +1,84 @@
+general:
+  train_mode: true #True for train+val, false for test set evaluation
+  
+  task: "instance_segmentation"
+  seed: 1
+  checkpoint: null
+  backbone_checkpoint: null
+  freeze_backbone: false # train only last layer
+
+  add_instance: true # true: instance segmentation, false: semantic segmentation
+
+  #####################################
+  experiment_name: TEST-EVAL
+  #####################################
+
+  experiment_id: ${now:%Y-%m-%d}_${now:%H-%M-%S}
+  version: 1
+
+  debug_best_worst_scenes: false # true or false
+  debug_mean_average_precision: false # true or false
+
+  num_targets: 1 #1, 21 # C, must exclude the invalid/ignore label (see paper)
+
+  use_dbscan: true
+  dbscan_eps: 1 # See sklearn docs, maximum distance between two samples for one to be considered as in the neighborhood of the other. Note that the downsampled Structured3D .ply files have downscaled coordinates, so this value should be kept constant as the rasterization factor is changed.
+  dbscan_min_points: 10 # See sklearn docs
+
+  filter_out_instances: True
+  scores_threshold: 0.8
+  iou_threshold: 1.0
+
+  # Exports predictions and ground truth as .las during certain validation steps
+  export_las: true
+  export_freq: 250
+
+  reps_per_epoch: 1
+
+  # Original Mask3D export
+  export: false
+  generic_export_score_threshold: 0.0001
+  
+  topk_per_image: -1 # -1 = num_queries
+
+  ignore_mask_idx: []
+
+  save_dir: saved/${general.experiment_name}
+  # time/commit/md5(config)_uuid
+  # time/experiment_id/version_uuid
+  # experiment_id: 1 # commit[:8], or unique from logger
+  # version: 1 # md5[:8] of config
+
+  accelerator: gpu
+  float32_matmul_precision: high
+
+
+defaults:
+  - _self_
+  - data: indoor
+  - data/data_loaders: simple_loader
+
+  # Remember to adjust num_queries when changing this!
+  # Remember to adjust export_freq when changing this!
+  - data/datasets: structured3d_room_detection # structured3d_room_detection, s3dis_room_detection or matterport3d_room_detection
+  
+  - data/collation_functions: voxelize_collate
+  - logging: offline # original mask3d: full
+  - model: mask3d
+  - metrics: miou
+  - optimizer: adamw
+  - scheduler: exponentiallr # onecyclelr or exponentiallr
+  - trainer: trainer
+  - callbacks: callbacks_instance_segmentation
+  - matcher: hungarian_matcher
+  - loss: set_criterion
+
+hydra:
+  run:
+    dir: saved/${general.experiment_name}/${general.experiment_id}/hydra/
+  sweep:
+    dir: saved/${general.experiment_name}/${general.experiment_id}/hydra/
+    # dir: ${general.save_dir}
+    subdir: ${hydra.job.num}_${hydra.job.id}
+  job:
+    chdir: False

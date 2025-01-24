@@ -1,0 +1,38 @@
+# these parameters are inherited by datasets, data_loaders and collators
+# but they might be overwritten
+
+# splits
+train_mode: train
+validation_mode: validation
+test_mode: test
+
+# dataset
+ignore_label: -1 # Relevant confusion matrix (which is never called)
+add_colors: false # 3dim
+add_normals: false # 3dim
+in_channels: 1
+num_labels: ${general.num_targets} # without "undefined" label
+add_instance: ${general.add_instance}
+task: ${general.task}
+
+# data loader
+pin_memory: true
+num_workers: 32
+batch_size: 16
+test_batch_size: ${data.batch_size} # 1
+
+reps_per_epoch: ${general.reps_per_epoch}
+
+cropping: false
+cropping_args:
+  min_points: 30000
+  aspect: 0.8
+  min_crop: 0.5
+  max_crop: 1.0
+
+crop_length: 6.0
+cropping_v1: true
+
+# room instance segmentation specific
+rasterization_factor: 150
+prediction_label_offset: 1

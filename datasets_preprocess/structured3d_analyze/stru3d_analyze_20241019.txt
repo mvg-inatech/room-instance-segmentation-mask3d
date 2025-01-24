@@ -1,0 +1,16 @@
+$ python structured3d_analyze.py --data_root /data/Structured3D_class21/ --scenes_file /data/structured3d_valid_scenes_class21.txt 
+Analyzing 3387 scenes...
+
+Results:
+num_scenes_with_undefined_rooms: 1542
+total_num_undefined_rooms: 3603
+First few scenes with undefined rooms: [('scene_00001', 1), ('scene_00005', 3), ('scene_00007', 5), ('scene_00012', 1), ('scene_00015', 2), ('scene_00019', 3), ('scene_00023', 2), ('scene_00029', 1), ('scene_00031', 1), ('scene_00034', 3), ('scene_00037', 1), ('scene_00040', 1), ('scene_00042', 1), ('scene_00044', 4), ('scene_00045', 3), ('scene_00046', 8), ('scene_00051', 2), ('scene_00052', 4), ('scene_00055', 4), ('scene_00064', 2)]
+Average number of undefined rooms per scene: 1.0637732506643047
+
+Average scene area: 80.08306678745033
+Average scene undefined area: 9.719207973869352, this is fraction 0.12136408311716193
+Average scene undefined area, thresholded (only consider a room as undefined if it is larger than 1 m^2): 9.669079703836777, this is fraction 0.12073812969100729
+The average undefined room (no threshold) has area: 9.136541051206077
+The median undefined room (no threshold) has area: 3.3488103932108997
+
+No. rooms per scene: min 1, max 22, avg 6.229111307942132, median 7

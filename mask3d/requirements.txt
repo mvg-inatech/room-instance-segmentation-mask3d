@@ -1,0 +1,43 @@
+#albumentations==1.4.10 # original mask3d: 1.2.1, not required for LiDAR point clouds
+fire==0.6.0 # original mask3d: 0.4.0
+hydra-core==1.3.2 # original mask3d: 1.0.5
+imageio==2.34.2 # original mask3d: 2.21.1
+joblib==1.4.2 # original mask3d: 1.2.0
+loguru==0.7.2 # original mask3d: 0.6.0
+matplotlib==3.9.0 # original mask3d: 3.7.1
+matplotlib-inline==0.1.7 # original mask3d: 0.1.6
+natsort==8.4.0 # original mask3d: 8.3.1
+numpy==1.26.4 # original mask3d: 1.24.2
+omegaconf==2.3.0 # original mask3d: 2.0.6
+open3d==0.18.0 # original mask3d: 0.17.0
+pandas==2.2.2 # original mask3d: 2.0.0
+plotly==5.22.0 # original mask3d: 5.14.1
+plyfile==1.0.3 # original: 0.7.4
+python-dotenv==1.0.1 # original mask3d: 0.20.0
+pyviz3d==0.3.5 # original mask3d: 0.2.28
+scipy==1.14.0 # mask3d original: 1.9.0
+tensorboard==2.17.0
+tensorboard-data-server==0.7.2
+tensorboard-plugin-wit==1.8.1
+torch-tb-profiler==0.4.3
+trimesh==4.4.1 # original mask3d: 3.14.0
+typing-extensions==4.12.2 # original mask3d: 4.5.0
+volumentations==0.1.8
+werkzeug==3.0.3 # original mask3d: 2.2.3
+opencv-python==4.10.0.84
+laspy==2.5.4
+
+
+pyyaml==5.4.1 # Is a dependency, pinning the version
+
+
+# Required by detectron2
+pillow==9.5.0
+
+
+# Install pytorch with CUDA 11.8
+--extra-index-url https://download.pytorch.org/whl/cu118
+torch==2.3.1+cu118
+torchvision==0.18.1+cu118
+torchmetrics==1.4.0
+pytorch-lightning==2.3.0

@@ -1,0 +1,52 @@
+# @package data
+train_dataset:
+  _target_: datasets.semseg_matterport3d.Matterport3DSegmentationDataset
+  data_root: /data/Matterport3D/preprocessed/v1/scans
+  volume_augmentations_path: conf/augmentation/volumentations_aug_matterport3d.yaml
+  data_fraction: 1
+  mode: trainval
+  # different augs experiments
+  #instance_oversampling: 0.0
+  #place_around_existing: false
+  #point_per_cut: 0
+  #max_cut_region: 0
+  #flip_in_center: false
+  #noise_rate: 0
+  #resample_points: 0
+  #add_unlabeled_pc: false
+  #cropping: ${data.cropping}
+  #cropping_args: ${data.cropping_args}
+  #is_tta: false
+  #crop_length: ${data.crop_length}
+  filter_out_classes: [] # none, the data contains no clutter
+  filter_out_instance_ids: [] # none, the data contains no clutter
+  prediction_label_offset: ${data.prediction_label_offset}
+  rasterization_factor: ${data.rasterization_factor}
+
+validation_dataset:
+  _target_: datasets.semseg_matterport3d.Matterport3DSegmentationDataset
+  data_root: /data/Matterport3D/preprocessed/v1/scans
+  volume_augmentations_path: null
+  data_fraction: 1
+  mode: test
+  #cropping: false
+  #is_tta: false
+  #crop_length: ${data.crop_length}
+  filter_out_classes: [] # none, the data contains no clutter
+  filter_out_instance_ids: [] # none, the data contains no clutter
+  prediction_label_offset: ${data.prediction_label_offset}
+  rasterization_factor: ${data.rasterization_factor}
+
+test_dataset:
+  _target_: datasets.semseg_matterport3d.Matterport3DSegmentationDataset
+  data_root: /data/Matterport3D/preprocessed/v1/scans
+  volume_augmentations_path: null
+  data_fraction: 1
+  mode: ${data.test_mode}
+  #cropping: false
+  #is_tta: false
+  #crop_length: ${data.crop_length}
+  filter_out_classes: [] # none, the data contains no clutter
+  filter_out_instance_ids: [] # none, the data contains no clutter
+  prediction_label_offset: ${data.prediction_label_offset}
+  rasterization_factor: ${data.rasterization_factor}

@@ -1,0 +1,30 @@
+# @package data
+
+train_collation:
+  _target_: datasets.utils.VoxelizeCollate
+  mode: ${data.train_mode}
+  small_crops: false
+  very_small_crops: false
+  batch_instance: false
+  task: ${general.task}
+  filter_out_classes: ${data.train_dataset.filter_out_classes}
+  filter_out_instance_ids: ${data.train_dataset.filter_out_instance_ids}
+  num_queries: ${model.num_queries}
+
+validation_collation:
+  _target_: datasets.utils.VoxelizeCollate
+  mode: ${data.validation_mode}
+  batch_instance: false
+  task: ${general.task}
+  filter_out_classes: ${data.validation_dataset.filter_out_classes}
+  filter_out_instance_ids: ${data.validation_dataset.filter_out_instance_ids}
+  num_queries: ${model.num_queries}
+
+test_collation:
+  _target_: datasets.utils.VoxelizeCollate
+  mode: ${data.test_mode}
+  batch_instance: false
+  task: ${general.task}
+  filter_out_classes: ${data.test_dataset.filter_out_classes}
+  filter_out_instance_ids: ${data.test_dataset.filter_out_instance_ids}
+  num_queries: ${model.num_queries}

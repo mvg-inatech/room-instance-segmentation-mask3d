@@ -1,0 +1,11 @@
+__pycache__
+.pyc
+
+.venv/
+data/
+*.zip
+
+s3d_floorplan_eval/montefloor_data/
+
+results.txt
+las_export/

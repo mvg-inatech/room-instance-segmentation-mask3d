@@ -1,0 +1,12 @@
+# These are requirements for the following directories:
+# downsample_point_cloud, structured3d_to_point_clouds
+
+# For the other directories, use another Python environment and the requirements.txt file which is part of that directory instead.
+
+numpy==1.26.4
+tqdm==4.64.0
+shapely==2.0.3
+plyfile==1.0.3
+joblib==1.3.2
+matplotlib==3.8.4
+laspy==2.5.4

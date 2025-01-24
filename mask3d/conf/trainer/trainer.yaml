@@ -1,0 +1,5 @@
+deterministic: true
+max_epochs: 15000
+min_epochs: 1
+check_val_every_n_epoch: 1
+num_sanity_val_steps: 0 #2  # -1 will check all val steps

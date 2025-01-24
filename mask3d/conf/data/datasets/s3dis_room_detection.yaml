@@ -1,0 +1,55 @@
+# @package data
+train_dataset:
+  _target_: datasets.semseg_s3dis.S3DISSegmentationDataset
+  data_root: /data/S3DIS_processed
+  volume_augmentations_path: conf/augmentation/volumentations_aug_s3dis.yaml
+  data_fraction: 1
+  mode: ${data.train_mode}
+  # different augs experiments
+  #instance_oversampling: 0.0
+  #place_around_existing: false
+  #point_per_cut: 0
+  #max_cut_region: 0
+  #flip_in_center: false
+  #noise_rate: 0
+  #resample_points: 0
+  #add_unlabeled_pc: false
+  #cropping: ${data.cropping}
+  #cropping_args: ${data.cropping_args}
+  #is_tta: false
+  #crop_length: ${data.crop_length}
+  filter_out_classes: [] # none, the data contains no clutter
+  filter_out_instance_ids: [] # none, the data contains no clutter
+  prediction_label_offset: ${data.prediction_label_offset}
+  rasterization_factor: ${data.rasterization_factor}
+  save_split_scene_names_dir: ${general.save_dir}
+
+validation_dataset:
+  _target_: datasets.semseg_s3dis.S3DISSegmentationDataset
+  data_root: /data/S3DIS_processed
+  volume_augmentations_path: null
+  data_fraction: 1
+  mode: ${data.validation_mode}
+  #cropping: false
+  #is_tta: false
+  #crop_length: ${data.crop_length}
+  filter_out_classes: [] # none, the data contains no clutter
+  filter_out_instance_ids: [] # none, the data contains no clutter
+  prediction_label_offset: ${data.prediction_label_offset}
+  rasterization_factor: ${data.rasterization_factor}
+  save_split_scene_names_dir: ${general.save_dir}
+
+test_dataset:
+  _target_: datasets.semseg_s3dis.S3DISSegmentationDataset
+  data_root: /data/S3DIS_processed
+  volume_augmentations_path: null
+  data_fraction: 1
+  mode: ${data.test_mode}
+  #cropping: false
+  #is_tta: false
+  #crop_length: ${data.crop_length}
+  filter_out_classes: [] # none, the data contains no clutter
+  filter_out_instance_ids: [] # none, the data contains no clutter
+  prediction_label_offset: ${data.prediction_label_offset}
+  rasterization_factor: ${data.rasterization_factor}
+  save_split_scene_names_dir: ${general.save_dir}

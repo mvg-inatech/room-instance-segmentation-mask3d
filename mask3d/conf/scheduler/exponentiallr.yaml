@@ -1,0 +1,9 @@
+scheduler:
+  _target_: torch.optim.lr_scheduler.ExponentialLR
+  gamma: 0.99999 #0.993 #0.99999
+  
+  last_epoch: -1 # ${trainer.max_epochs}
+  # need to set to number because of tensorboard logger
+
+pytorch_lightning_params:
+  interval: step # epoch or step
