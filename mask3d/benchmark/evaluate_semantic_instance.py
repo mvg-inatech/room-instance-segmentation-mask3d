@@ -264,7 +264,7 @@ class Mask3DEvaluator:
         else:
             avg_dict[f"{log_prefix}_mean_ap_50"] = np.nan
 
-        # Calculate mAP50. It is the mean of the class APs at IoU=0.25
+        # Calculate mAP25. It is the mean of the class APs at IoU=0.25
         if ap_scores[ap_config_idx, :, iou_threshold_mask_25].size > 0 and not np.isnan(ap_scores[ap_config_idx, :, iou_threshold_mask_25]).all():
             avg_dict[f"{log_prefix}_mean_ap_25"] = np.nanmean(ap_scores[ap_config_idx, :, iou_threshold_mask_25])
         else:
