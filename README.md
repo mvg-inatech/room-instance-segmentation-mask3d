@@ -9,7 +9,7 @@ Alexander Reiterer<sup>1,2</sup>
 <sup>1</sup>University of Freiburg, Germany
 <sup>2</sup>Fraunhofer Institute for Physical Measurement Techniques IPM, Germany
 
-We segmented room instances in 3D indoor building point clouds without the need for orthographic projections into 2D density maps.
+We segmented room instances in 3D indoor building point clouds without the need for orthographic projections into 2D density maps, enabling end-to-end learned segmentation of multi-floor scenes.
 
 
 <a href="https://pytorch.org/get-started/locally/"><img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white"></a>
