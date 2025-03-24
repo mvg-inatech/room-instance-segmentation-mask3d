@@ -3,7 +3,7 @@
 <div align="center">
 Michael Brunklaus<sup>1,2</sup>,
 Maximilian Kellner<sup>1,2</sup>,
-Alexander Reiterer<sup>1,2</sup>,
+Alexander Reiterer<sup>1,2</sup>
 
 
 <sup>1</sup>University of Freiburg, Germany
